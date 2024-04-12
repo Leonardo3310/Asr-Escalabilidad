@@ -1,32 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .custom-form {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-custom {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 50px; /* Botones con bordes redondeados */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+</style>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Create Measurement</h4>
-                    <form method="POST">
-                        {% csrf_token %}
-                        {% for field in form %}
-                            <div class="form-group">
-                                <label>{{ field.label }}</label>
-                                {{ field }}
-                                {% if field.help_text %}
-                                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                                {% endif %}
-                                {% for error in field.errors %}
-                                    <div class="alert alert-danger">{{ error }}</div>
-                                {% endfor %}
-                            </div>
-                        {% endfor %}
-                        <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-success">Create</button>
-                            <button type="button" class="btn btn-primary" onClick="window.location.href='/measurements'">Back</button>
+        <div class="col-md-8">
+            <div class="custom-form">
+                <h4 class="text-center mb-4">Create Measurement</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {{ field|add_class:'form-control' }} <!-- Añade la clase form-control para mejor formato -->
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                            {% endfor %}
                         </div>
-                    </form>
-                </div>
+                    {% endfor %}
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-custom btn-success">Create</button>
+                        <button type="button" class="btn btn-custom btn-primary" onClick="window.location.href='/measurements'">Back</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
