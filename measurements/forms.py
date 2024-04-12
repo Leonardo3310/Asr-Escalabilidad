@@ -6,7 +6,7 @@ class MeasurementForm(forms.ModelForm):
         model = Measurement
         fields = [
             'variable',
-            'value',
+            #'value',
             'unit',
             'place',
             #'dateTime',
@@ -14,7 +14,7 @@ class MeasurementForm(forms.ModelForm):
 
         labels = {
             'variable' : 'Variable',
-            'value' : 'Value',
+            #'value' : 'Value',
             'unit' : 'Unit',
             'place' : 'Place',
             #'dateTime' : 'Date Time',

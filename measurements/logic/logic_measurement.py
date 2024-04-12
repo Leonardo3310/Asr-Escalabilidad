@@ -6,5 +6,6 @@ def get_measurements():
 
 def create_measurement(form):
     measurement = form.save()
+    measurement.value +=1
     measurement.save()
     return ()
