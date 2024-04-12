@@ -12,5 +12,8 @@ def create_measurement(form):
 
     new_measurement = form.save()
     new_measurement.value = new_value
+    print(f"Último valor: {last_measurement.value if last_measurement else 'Ninguno'}")
+    print(f"Nuevo valor: {new_value}")
+
     new_measurement.save()
     return ()
