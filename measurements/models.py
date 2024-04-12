@@ -3,7 +3,7 @@ from variables.models import Variable
 
 class Measurement(models.Model):
     variable = models.ForeignKey(Variable, on_delete=models.CASCADE, default=None)
-    value = 0
+    value = models.IntegerField(null=True, blank=True, default=None)
     unit = models.CharField(max_length=50)
     place = models.CharField(max_length=50)
     dateTime = models.DateTimeField(auto_now_add=True)
